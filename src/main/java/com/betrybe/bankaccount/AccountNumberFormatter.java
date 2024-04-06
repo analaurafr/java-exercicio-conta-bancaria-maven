@@ -1,4 +1,5 @@
 package com.betrybe.bankaccount;
+import org.apache.commons.lang3.StringUtils;
 
 
 /**
@@ -12,7 +13,13 @@ public class AccountNumberFormatter {
    * @param literalAccountNumber número da conta
    */
   public String formatAccountNumber(int literalAccountNumber) {
-    return null;
+    String accountNumber = String.valueOf(literalAccountNumber);
+    if (accountNumber.length() > 6) {
+      accountNumber = StringUtils.right(accountNumber, 6);
+    } else if (accountNumber.length() < 6) {
+      accountNumber = StringUtils.leftPad(accountNumber, 6, '0');
+    }
+    return accountNumber;
   }
 
 }
